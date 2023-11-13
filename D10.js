@@ -155,11 +155,11 @@ let stringa = "Io ho avuto 3 cani"
 
 function onlyLetters (x) {
   a = x.split("");
-  b = [];
+  b = []
 
   for (i=0; i<a.length; i++) {
     if (isNaN(parseFloat(a[i])) === false){
-      b=a.slice(i, i+1);
+      b = a.splice(i, 2, "");
     }
   }
   console.log(b)
@@ -172,7 +172,7 @@ onlyLetters(stringa)
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
 
-let email = "peppino@google.com"
+let email = "peppino@gmail.com"
 
 function isThisAnEmail (x) {
 
@@ -606,19 +606,38 @@ for (i=0; i<alltd.length; i++) {
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
 
-
+let allLinks = document.querySelectorAll("a")
+for (i=0; i<allLinks.length; i++) {
+  allLinks[i].style.backgroundColor = "red";
+}
 
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
 
+let lista = document.querySelector("#myList");
+
+let mozzarella = document.createElement("li");
+mozzarella.innerText = "Mozzarella";
+lista.appendChild(mozzarella)
+
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
 
+let allLi = document.querySelectorAll("#myList > li")
+for (i=0; i<allLi.length; i++){
+  allLi[i].remove()
+}
+
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
+
+let alltr = document.querySelectorAll("tr");
+for (i=0; i<allLi.length; i++){
+  alltr[i].className = "test"
+}
 
 // [EXTRA] JS Avanzato
 
@@ -634,6 +653,19 @@ for (i=0; i<alltd.length; i++) {
 
 */
 
+function halfTree (x) {
+  i = 0;
+  asterischi = "";
+
+  while (i<x){
+    asterischi += "*";
+    console.log(asterischi);
+    i++
+  }
+}
+
+halfTree(3)
+
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
 
@@ -646,7 +678,29 @@ for (i=0; i<alltd.length; i++) {
 
 */
 
+
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
 
+let numcas = Math.ceil(Math.random()*100);
+
+function isItPrime(x) {
+  if (x < 2){
+    prime = false;
+  }
+  for (let i = 2; i < x; i++) {
+    if (x % i === 0){
+      prime = true;
+    };
+  }
+  
+  console.log(prime)
+
+  switch (prime){
+    case true: console.log("Il numero fornito \"" + x + "\" è un Numero Primo"); break;
+    case false: console.log("Il numero fornito \"" + x + "\" NON è un Numero Primo"); break;
+  }
+}
+
+isItPrime(numcas)
